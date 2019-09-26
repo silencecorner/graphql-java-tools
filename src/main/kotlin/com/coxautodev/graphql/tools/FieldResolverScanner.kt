@@ -100,6 +100,8 @@ internal class FieldResolverScanner(val options: SchemaParserOptions) {
             (isBoolean && it.name == "is${name.capitalize()}") && verifyMethodArguments(it, argumentCount, search)
         } ?: methods.find {
             it.name == "get${name.capitalize()}" && verifyMethodArguments(it, argumentCount, search)
+        }   ?: methods.find {
+            it.name == "get${name.capitalize()}List" && verifyMethodArguments(it, argumentCount, search)
         } ?: methods.find {
             it.name == "getField${name.capitalize()}" && verifyMethodArguments(it, argumentCount, search)
         }

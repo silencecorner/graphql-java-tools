@@ -389,11 +389,14 @@ internal class SchemaClassScanner(initialDictionary: BiMap<String, Class<*>>, al
 
     private fun findInputValueTypeInType(name: String, clazz: Class<*>): JavaType? {
         val methods = clazz.methods
-
+        var protoListMethod = "get${name.capitalize()}List"
         val filteredMethods = methods.filter {
-            it.name == name || it.name == "get${name.capitalize()}"
+            it.name == name || it.name == "get${name.capitalize()}" || it.name == protoListMethod
         }.sortedBy { it.name.length }
-        return filteredMethods.find {
+
+        return filteredMethods.find{
+            it.name == protoListMethod
+        }?.genericReturnType ?: filteredMethods.find {
             !it.isSynthetic
         }?.genericReturnType ?: filteredMethods.firstOrNull(
         )?.genericReturnType ?: clazz.fields.find {
