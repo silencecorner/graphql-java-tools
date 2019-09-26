@@ -309,18 +309,14 @@
         </license>
     </licenses>
     <distributionManagement>
-        <snapshotRepository>
-            <id>bintray</id>
-            <name>graphql-java-kickstart-graphql-java-tools</name>
-            <url>http://oss.jfrog.org/artifactory/oss-snapshot-local</url>
-        </snapshotRepository>
-
-        <!-- Released with: mvn release:clean release:prepare release:perform -B -e -Pbintray -->
         <repository>
-            <id>bintray</id>
-            <name>graphql-java-kickstart-graphql-java-tools</name>
-            <url>https://api.bintray.com/maven/graphql-java-kickstart/releases/graphql-java-tools/;publish=1</url>
+            <id>rdc-releases</id>
+            <url>https://repo.rdc.aliyun.com/repository/73792-release-PXkyIy/</url>
         </repository>
+        <snapshotRepository>
+            <id>rdc-snapshots</id>
+            <url>https://repo.rdc.aliyun.com/repository/73792-snapshot-z4fvGZ/</url>
+        </snapshotRepository>
     </distributionManagement>
     <scm>
         <connection>scm:git:https://github.com/graphql-java-kickstart/graphql-java-tools.git</connection>
